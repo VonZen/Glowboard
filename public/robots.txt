@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /Glowboard/
+
+Sitemap: https://vonzen.github.io/Glowboard/sitemap.xml
