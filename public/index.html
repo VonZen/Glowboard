@@ -3,28 +3,174 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Glowboard. Privacy policy, terms of service and support.">
-  <meta name="theme-color" content="#f8f9fb">
-  <title>Glowboard</title>
+  <meta name="description" content="A little glow. A lot to say. Meet Glowboard, a playful LED banner app for iPhone and iPad. Try a message, find your favourite theme, and make it shine.">
+  <meta name="theme-color" content="#fff4d9">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Glowboard — A little glow. A lot to say.">
+  <meta property="og:description" content="LED banners for concerts, big hellos, and the little moments in between. Make your message glow with Glowboard for iPhone and iPad.">
+  <meta property="og:url" content="https://vonzen.github.io/Glowboard/">
+  <meta property="og:image" content="https://vonzen.github.io/Glowboard/assets/theme-cream.png">
+  <meta name="twitter:card" content="summary">
+  <title>Glowboard — LED banners with a little personality</title>
   <link rel="canonical" href="https://vonzen.github.io/Glowboard/">
   <link rel="icon" href="assets/app-icon.png" type="image/png">
   <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/landing.css">
+  <script src="assets/landing.js" defer></script>
 </head>
-<body class="launch-page">
+<body class="landing-page" data-theme="cream">
   <a class="skip-link" href="#main">Skip to content</a>
-  <main class="launch" id="main">
-    <div class="launch-brand">
-      <img src="assets/app-icon.png" width="84" height="84" alt="">
-      <h1>Glowboard</h1>
-    </div>
+  <header class="landing-header wide-container">
+    <a class="brand" href="./" aria-label="Glowboard home"><img src="assets/app-icon.png" width="42" height="42" alt=""><span>Glowboard</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#playground">Try it out</a>
+      <a href="#themes">Meet your glow</a>
+      <a href="#pro">Glowboard Pro</a>
+    </nav>
+    <a class="availability" href="https://apps.apple.com/app/id6822701782">Get Glowboard <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main">
+    <section class="hero wide-container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="hero-kicker"><span class="tiny-dots" aria-hidden="true">⠿</span> Little screen. Big feelings.</p>
+        <h1 id="hero-title">A little glow.<br> A lot to say.</h1>
+        <p class="hero-description">LED banners for concerts, big hellos, and all the little moments in between.</p>
+        <a class="primary-button" href="https://apps.apple.com/app/id6822701782">Download on the App Store <span aria-hidden="true">↗</span></a>
+        <a class="try-link" href="#playground">Or try a message here <span aria-hidden="true">↓</span></a>
+        <p class="platform-note">Made for iPhone &amp; iPad</p>
+      </div>
+      <figure class="hero-art">
+        <div class="mascot-board">
+          <div class="mascot-screen board-surface">
+            <span class="banner-fallback" aria-hidden="true">I ♥ U</span>
+            <canvas data-board="hero" data-text="I ♥ U" role="img" aria-label="Live LED banner illustration: I love you">I love you</canvas>
+          </div>
+          <img id="hero-mascot" class="mascot-image" src="assets/mascot-cream.png" width="720" height="720" alt="A golden puppy holding your glowing message" fetchpriority="high">
+        </div>
+        <figcaption>Small screen. Very big energy.</figcaption>
+      </figure>
+    </section>
+
+    <section class="moments wide-container" aria-labelledby="moments-title">
+      <div class="section-intro">
+        <h2 id="moments-title">There’s a glow for that.</h2>
+        <p>A favourite song. A familiar face. A few words that make someone’s day.</p>
+      </div>
+      <div class="moment-grid">
+        <a class="moment-card concert" href="#playground" data-message="ONE MORE SONG" data-preset-color="aqua">
+          <img src="assets/scene-concert.png" width="426" height="276" alt="" loading="lazy">
+          <span class="moment-copy"><strong>For the encore</strong><span>ONE MORE SONG</span></span><span class="moment-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="moment-card love" href="#playground" data-message="I ♥ YOU" data-preset-color="pink">
+          <img src="assets/scene-love.png" width="426" height="276" alt="" loading="lazy">
+          <span class="moment-copy"><strong>For your person</strong><span>I ♥ YOU</span></span><span class="moment-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="moment-card birthday" href="#playground" data-message="HAPPY BIRTHDAY" data-preset-color="pink">
+          <img src="assets/scene-birthday.png" width="426" height="276" alt="" loading="lazy">
+          <span class="moment-copy"><strong>For their big day</strong><span>HAPPY BIRTHDAY</span></span><span class="moment-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="moment-card airport" href="#playground" data-message="WELCOME HOME" data-preset-color="sunshine">
+          <img src="assets/scene-airport.png" width="426" height="276" alt="" loading="lazy">
+          <span class="moment-copy"><strong>For the hello</strong><span>WELCOME HOME</span></span><span class="moment-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="playground wide-container" id="playground" aria-labelledby="playground-title">
+      <div class="playground-heading">
+        <div><p class="section-label">A little preview</p><h2 id="playground-title">Your words.<br> Their moment.</h2></div>
+        <p>Type a line. Pick a colour.<br> See what a little glow can do.</p>
+      </div>
+      <div class="playground-panel">
+        <div class="demo-display">
+          <div class="demo-board board-surface">
+            <span class="banner-fallback" aria-hidden="true">HELLO!</span>
+            <canvas data-board="playground" data-text="HELLO!" role="img" aria-label="LED banner preview: HELLO!">HELLO!</canvas>
+          </div>
+          <div class="display-caption"><span><span class="status-dot" aria-hidden="true"></span> Live web preview</span><button class="motion-button" id="motion-toggle" type="button" aria-pressed="false" hidden>Pause motion <span aria-hidden="true">Ⅱ</span></button></div>
+        </div>
+        <div class="demo-controls" id="demo-controls" hidden>
+          <div class="message-field">
+            <label for="message">What do you want to say?</label>
+            <input id="message" name="message" value="HELLO!" maxlength="40" autocomplete="off" spellcheck="false" aria-describedby="message-hint message-count">
+            <div class="input-meta"><span id="message-hint">A few words go a long way.</span><span id="message-count">6 / 40</span></div>
+          </div>
+          <fieldset><legend>Your glow</legend><div class="colour-options">
+            <button type="button" class="colour-choice sunshine" data-color="sunshine" aria-pressed="true"><span aria-hidden="true"></span>Sunshine</button>
+            <button type="button" class="colour-choice pink" data-color="pink" aria-pressed="false"><span aria-hidden="true"></span>Pink</button>
+            <button type="button" class="colour-choice aqua" data-color="aqua" aria-pressed="false"><span aria-hidden="true"></span>Aqua</button>
+          </div></fieldset>
+          <fieldset><legend>Make it your style</legend><div class="style-options">
+            <button type="button" data-style="led" aria-pressed="true">LED</button>
+            <button type="button" data-style="neon" aria-pressed="false">Neon</button>
+            <button type="button" data-style="big" aria-pressed="false">Big text</button>
+          </div></fieldset>
+        </div>
+        <noscript><p class="no-script">Enable JavaScript to try the interactive preview. You can still explore Glowboard and its themes below.</p></noscript>
+      </div>
+      <p class="preview-note">Just a taste of Glowboard. The app adds full-screen playback, more effects, music and Pro exports. Preview text stays in your browser.</p>
+      <p class="sr-only" id="preview-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="themes wide-container" id="themes" aria-labelledby="themes-title">
+      <div class="theme-copy">
+        <h2 id="themes-title">Find your<br> kind of glow.</h2>
+        <p>A sunny puppy, a sweet kitten, or a little starlight. Three personalities. One place for your words.</p>
+        <p class="theme-instruction">Pick a pal. Try the colours.</p>
+        <p class="theme-current" id="theme-status" role="status">You’re in good company with Cream Puppy.</p>
+      </div>
+      <div class="theme-options" role="group" aria-label="Preview an interface theme">
+        <button type="button" class="theme-choice" data-theme-choice="cream" aria-pressed="true" aria-label="Try the Cream Puppy theme" disabled>
+          <span class="theme-image"><img src="assets/theme-cream.png" width="360" height="390" alt="Golden puppy with an I love you LED banner on a yellow background" loading="lazy"></span>
+          <span class="theme-choice-label">Cream Puppy<span class="theme-check" aria-hidden="true">✓</span></span>
+        </button>
+        <button type="button" class="theme-choice" data-theme-choice="peach" aria-pressed="false" aria-label="Try the Peach Kitten theme" disabled>
+          <span class="theme-image"><img src="assets/theme-peach.png" width="360" height="390" alt="Kitten with an I love you LED banner on a peach-pink background" loading="lazy"></span>
+          <span class="theme-choice-label">Peach Kitten<span class="theme-check" aria-hidden="true">✓</span></span>
+        </button>
+        <button type="button" class="theme-choice" data-theme-choice="star" aria-pressed="false" aria-label="Try the Starlight Shiba theme" disabled>
+          <span class="theme-image"><img src="assets/theme-star.png" width="360" height="390" alt="Shiba with an I love you LED banner on a starry purple background" loading="lazy"></span>
+          <span class="theme-choice-label">Starlight Shiba<span class="theme-check" aria-hidden="true">✓</span></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="pro-section wide-container" id="pro" aria-labelledby="pro-title">
+      <div class="pro-art" aria-hidden="true">
+        <div class="pro-illustration"><div class="pro-sign">PRO <span>✦</span></div><img src="assets/pro-puppy.png" width="720" height="720" alt="" loading="lazy"></div>
+        <span class="pro-sticker">A little extra sparkle.</span>
+      </div>
+      <div class="pro-copy">
+        <p class="section-label">Glowboard Pro</p>
+        <h2 id="pro-title">A bigger box<br> of bright ideas.</h2>
+        <p>Start with the essentials. Go Pro when you want a little more room to play.</p>
+        <dl class="pro-features">
+          <div><dt>More ways to shine</dt><dd>Explore gradients, custom dot looks and extra animated effects.</dd></div>
+          <div><dt>Let sound lead</dt><dd>Make your banner react to nearby sound or your selected music.</dd></div>
+          <div><dt>Take the glow with you</dt><dd>Export a video or GIF, then save it or share it with your favourite people.</dd></div>
+        </dl>
+        <p class="pro-note">Optional in-app purchase. Plans and eligibility are shown in the app.</p>
+      </div>
+    </section>
+
+    <section class="questions wide-container" id="availability" aria-labelledby="questions-title">
+      <h2 id="questions-title">Good to know.</h2>
+      <dl class="question-list">
+        <div><dt>Where can I get Glowboard?</dt><dd>Find Glowboard on the <a href="https://apps.apple.com/app/id6822701782">App Store</a> for iPhone and iPad.</dd></div>
+        <div><dt>Do I need an account?</dt><dd>No Glowboard account is needed. Make a banner, choose a look and hold it up. Your creations are saved on your device.</dd></div>
+        <div><dt>What’s free, and what’s Pro?</dt><dd>Core banner styles, text colours and basic playback are free. Pro adds advanced customisation, sound-reactive features, imported music and video or GIF export.</dd></div>
+        <div><dt>Does the website save my message?</dt><dd>No. This preview runs in your browser and doesn’t upload or save the text you type. The <a href="privacypolicy/">Privacy policy</a> explains the app’s separate usage analytics and purchase services.</dd></div>
+      </dl>
+    </section>
   </main>
-  <footer class="site-footer container">
-    <p>© 2026 Glowboard</p>
+  <footer class="landing-footer wide-container">
+    <div class="footer-brand-block"><a class="brand" href="./"><img src="assets/app-icon.png" width="36" height="36" alt=""><span>Glowboard</span></a><p>Little screen. Big feelings.</p></div>
     <nav class="footer-links" aria-label="Legal and support">
       <a href="privacypolicy/">Privacy policy</a>
       <a href="termsofservice/">Terms of service</a>
       <a href="mailto:vonzenappstudio@gmail.com">Contact</a>
     </nav>
+    <div class="footer-bottom"><p>© 2026 Glowboard</p><a href="#main">Back to top <span aria-hidden="true">↑</span></a></div>
   </footer>
 </body>
 </html>

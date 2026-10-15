@@ -25,6 +25,8 @@ jobs:
           python-version: '3.12'
       - name: Check pages and links
         run: python3 scripts/validate_site.py
+      - name: Check preview JavaScript
+        run: node --check public/assets/landing.js
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

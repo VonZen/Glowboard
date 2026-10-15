@@ -18,6 +18,11 @@ ROUTES = {
 }
 EXPECTED_FILES = {
     *ROUTES, "404.html", "assets/site.css", "assets/app-icon.png",
+    "assets/landing.css", "assets/landing.js",
+    "assets/mascot-cream.png", "assets/mascot-peach.png", "assets/mascot-star.png",
+    "assets/theme-cream.png", "assets/theme-peach.png", "assets/theme-star.png",
+    "assets/scene-concert.png", "assets/scene-love.png", "assets/scene-birthday.png", "assets/scene-airport.png",
+    "assets/pro-puppy.png",
     ".nojekyll", "robots.txt", "sitemap.xml",
 }
 errors = []
@@ -42,7 +47,7 @@ class Document(HTMLParser):
         self.viewport = None
         self.has_title = False
         self.time = None
-        self.scripts = 0
+        self.scripts = []
         self.feed(path.read_text())
 
     def handle_starttag(self, tag, attributes):
@@ -75,7 +80,7 @@ class Document(HTMLParser):
         if tag == "img":
             check("alt" in attrs, f"{self.path.name}: image without alt attribute")
         if tag == "script":
-            self.scripts += 1
+            self.scripts.append(attrs)
         check(not any(key.startswith("on") for key in attrs), f"{self.path.name}: inline script handler")
 
 
@@ -92,11 +97,16 @@ for path, document in documents.items():
     check(document.has_title and document.description, f"{label}: page metadata missing")
     check(document.viewport and "width=device-width" in document.viewport, f"{label}: viewport missing")
     check("main" in document.ids, f"{label}: main landmark target missing")
-    check(document.scripts == 0, f"{label}: unexpected script or tracker")
+    if label == "index.html":
+        check(document.scripts == [{"src": "assets/landing.js", "defer": None}], f"{label}: unexpected script or tracker")
+        check({"playground", "themes", "pro", "availability"}.issubset(document.ids), "Landing-page sections missing")
+        check("https://apps.apple.com/app/id6822701782" in document.links, "App Store destination missing")
+    else:
+        check(not document.scripts, f"{label}: unexpected script or tracker")
     if label in ROUTES:
         check(document.canonical == ORIGIN + PREFIX + ROUTES[label], f"{label}: canonical mismatch")
     if "policy" in label or "termsofservice" in label:
-        check(document.time == "2026-10-14", f"{label}: legal revision date missing")
+        check(document.time == "2026-10-15", f"{label}: legal revision date missing")
     for resource in document.resources:
         parsed = urlparse(resource)
         check(not parsed.netloc or parsed.netloc == "vonzen.github.io", f"{label}: third-party resource {resource}")
@@ -133,6 +143,9 @@ for path in ROOT.rglob("*"):
           f"{path.name}: unrelated reference-app content found")
 
 namespace = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+script = (ROOT / "assets/landing.js").read_text()
+check(not re.search(r"\b(?:fetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|localStorage|sessionStorage|eval\s*\()|document\.cookie", script),
+      "Preview script must not transmit, persist or evaluate user text")
 sitemap = ET.parse(ROOT / "sitemap.xml")
 actual_urls = {node.text for node in sitemap.findall(".//s:loc", namespace)}
 check(actual_urls == {ORIGIN + PREFIX + route for route in ROUTES.values()}, "Sitemap route mismatch")
