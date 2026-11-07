@@ -23,7 +23,7 @@ EXPECTED_FILES = {
     "assets/theme-cream.png", "assets/theme-peach.png", "assets/theme-star.png",
     "assets/scene-concert.png", "assets/scene-love.png", "assets/scene-birthday.png", "assets/scene-airport.png",
     "assets/pro-puppy.png",
-    ".nojekyll", "robots.txt", "sitemap.xml",
+    ".nojekyll", "robots.txt", "sitemap.xml", "app-ads.txt",
 }
 errors = []
 
@@ -149,7 +149,7 @@ check(not re.search(r"\b(?:fetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|localS
 sitemap = ET.parse(ROOT / "sitemap.xml")
 actual_urls = {node.text for node in sitemap.findall(".//s:loc", namespace)}
 check(actual_urls == {ORIGIN + PREFIX + route for route in ROUTES.values()}, "Sitemap route mismatch")
-check(ORIGIN + PREFIX + "sitemap.xml" in (ROOT / "robots.txt").read_text(), "Sitemap discovery missing")
+check("https://glowboard.10131501.xyz/sitemap.xml" in (ROOT / "robots.txt").read_text(), "Sitemap discovery missing")
 
 if errors:
     print("Validation failed:\n" + "\n".join(f"- {error}" for error in errors))

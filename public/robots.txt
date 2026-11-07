@@ -1,4 +1,5 @@
 User-agent: *
-Allow: /Glowboard/
-
-Sitemap: https://vonzen.github.io/Glowboard/sitemap.xml
+Allow: /
+Disallow: /*.json$
+Disallow: /*.txt$
+Sitemap: https://glowboard.10131501.xyz/sitemap.xml
